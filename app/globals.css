@@ -750,6 +750,180 @@ body {
 }
 .cta-text span { color: var(--red); font-style: normal; }
 
+/* ─── TOOTH JOURNEY (Section 2) ─────────────────────────────── */
+.jy-section {
+  position: relative;
+  height: 900vh;
+}
+.jy-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #1a1f36; /* brand navy — Three.js takes over immediately */
+}
+.jy-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Feature panels */
+.jy-fp {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% + 18px));
+  max-width: 290px;
+  opacity: 0;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.jy-fp.fp-on {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+.jy-fp-r { right: 60px; text-align: right; }
+
+.jy-fp-stage {
+  display: block;
+  font-family: var(--sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 8px;
+}
+.jy-fp-n {
+  display: block;
+  font-family: 'Fraunces', var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+  color: #c8a840;
+  margin-bottom: 9px;
+}
+.jy-fp-rule {
+  width: 24px;
+  height: 1px;
+  background: #c8a840;
+  margin-bottom: 13px;
+  margin-left: auto;
+}
+.jy-fp-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 34px);
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.06;
+  letter-spacing: -0.5px;
+  margin-bottom: 11px;
+}
+.jy-fp-body {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+}
+
+/* Vertical pill nav — Apple capsule style */
+.jy-nav {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 148px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 5px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 10;
+  pointer-events: none;
+}
+.jy-nav-stage {
+  border-radius: 22px;
+  padding: 13px 16px;
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+  display: flex;
+  align-items: flex-start;
+}
+.jy-nav-stage.jn-on {
+  background: rgba(210, 172, 38, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(210, 172, 38, 0.28), 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+.jy-nav-text { padding: 0; }
+.jy-nav-label {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.18);
+  letter-spacing: -0.3px;
+  transition: color 0.45s;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  display: block;
+}
+.jy-nav-stage.jn-on   .jy-nav-label { color: #d4b030; }
+.jy-nav-stage.jn-done .jy-nav-label { color: rgba(255, 255, 255, 0.28); }
+.jy-nav-sub {
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.1);
+  transition: color 0.45s;
+  display: block;
+}
+.jy-nav-stage.jn-on   .jy-nav-sub { color: rgba(212, 176, 48, 0.55); }
+.jy-nav-stage.jn-done .jy-nav-sub { color: rgba(255, 255, 255, 0.14); }
+
+/* Scroll hint */
+.jy-hint {
+  position: absolute;
+  bottom: 40px;
+  right: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  transition: opacity 0.5s;
+  z-index: 10;
+  pointer-events: none;
+}
+.jy-hint.jy-hint-off { opacity: 0; }
+.jy-hint-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, #c8a840, transparent);
+  animation: jy-hp 1.6s ease-in-out infinite;
+}
+.jy-hint-txt {
+  font-family: var(--sans);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  writing-mode: vertical-rl;
+}
+@keyframes jy-hp {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 1;   }
+}
+
 /* ─── BENTO SCROLL SHOWCASE ─────────────────────────────────── */
 .bento-scroll {
   height: 500vh;

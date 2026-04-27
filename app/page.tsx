@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LogoScene, { type LogoSceneHandle } from "./components/LogoScene";
+import ToothJourney from "./components/ToothJourney";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,8 +16,6 @@ export default function Home() {
   const [caretOn, setCaretOn] = useState(true);
   const cursorRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const bentoRef = useRef<HTMLDivElement>(null);
-  const [bentoProgress, setBentoProgress] = useState(0);
   const oryzoRef = useRef<HTMLDivElement>(null);
   const [oryzoProgress, setOryzoProgress] = useState(0);
   const [oryzoPhase, setOryzoPhase] = useState(0);
@@ -107,21 +106,6 @@ export default function Home() {
     };
   }, []);
 
-  // Bento scroll showcase — scrubbed scroll
-  useEffect(() => {
-    const section = bentoRef.current;
-    if (!section) return;
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        onUpdate: (self) => setBentoProgress(self.progress),
-      });
-    });
-    return () => ctx.revert();
-  }, []);
 
   // Oryzo section — GSAP ScrollTrigger with scrub:1
   useEffect(() => {
@@ -286,115 +270,8 @@ export default function Home() {
 
         </div>{/* end hero-monitor-wrap */}
 
-        {/* ── BENTO SCROLL SHOWCASE ── */}
-        {(() => {
-          const p = bentoProgress;
-          const easeInOut = (t: number) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-
-          // Filler content — 4 cards rise sequentially
-          const cards = [
-            {
-              eyebrow: "01 — TRACK",
-              heading: "Every case flows through one view.",
-              body: "Lab cases move through stages, technicians, doctors, and deadlines without anyone reaching for a spreadsheet. Everything stays in sync.",
-              statVal: "142",
-              statLabel: "ACTIVE CASES",
-            },
-            {
-              eyebrow: "02 — AUTOMATE",
-              heading: "Your workflows, running themselves.",
-              body: "Assignments, reminders, and status handoffs happen in the background so your team can focus on the actual work.",
-              statVal: "4.2h",
-              statLabel: "SAVED PER DAY",
-            },
-            {
-              eyebrow: "03 — MEASURE",
-              heading: "Real numbers. Real time.",
-              body: "Throughput, bottlenecks, returns, efficiency — all visible at a glance. No more guessing where cases live.",
-              statVal: "98%",
-              statLabel: "ON-TIME RATE",
-            },
-            {
-              eyebrow: "04 — SHIP",
-              heading: "Deadlines met. Every case, every time.",
-              body: "Labs running on cromiw ship more cases on time with fewer remakes. That shows up in the bottom line.",
-              statVal: "31",
-              statLabel: "DUE TODAY",
-            },
-          ];
-
-          // Timing: each card has a center progress and a window
-          // At p = center, card is centered (Y=0). Before → below (Y>0). After → above (Y<0).
-          const schedule = [
-            { center: 0.00, window: 0.18 }, // card 1: at center on arrival
-            { center: 0.30, window: 0.18 },
-            { center: 0.60, window: 0.18 },
-            { center: 1.00, window: 0.22 }, // card 4: at center on exit
-          ];
-          const TRAVEL = 780; // px the card moves from off-screen to center
-
-          // Sphere: continuous downward drift across the whole scroll
-          // Slight horizontal sway + gentle scale pulse + rotation
-          const sLeft = 56 + Math.sin(p * Math.PI) * -6;   // 56 → 50 → 56
-          const sTop = 14 + p * 74;                         // 14% → 88%
-          const sScale = 1 + Math.sin(p * Math.PI) * 0.12; // subtle pulse
-          const sRot = p * 360;                             // one full rotation
-
-          return (
-            <div ref={bentoRef} className="bento-scroll">
-              <div className="bento-sticky">
-                {/* Top progress bar */}
-                <div className="bento-progress">
-                  <div className="bento-progress-fill" style={{ width: `${p * 100}%` }} />
-                </div>
-
-                {/* Sphere — background layer, drifts down with scroll */}
-                <div
-                  className="bento-sphere"
-                  style={{
-                    left: `${sLeft}%`,
-                    top: `${sTop}%`,
-                    transform: `translate(-50%, -50%) rotate(${sRot}deg) scale(${sScale})`,
-                  }}
-                />
-
-                {/* Cards — rise from below, one at a time */}
-                <div className="bento-cards-wrap">
-                  {cards.map((card, i) => {
-                    const { center, window } = schedule[i];
-                    const rawDelta = (p - center) / window;
-                    const clamped = Math.max(-1.15, Math.min(1.15, rawDelta));
-                    const signed = Math.sign(clamped) * easeInOut(Math.min(1, Math.abs(clamped)));
-                    const y = -signed * TRAVEL;
-                    const absDelta = Math.abs(clamped);
-                    const opacity = absDelta >= 1.1 ? 0
-                      : absDelta >= 0.85 ? 1 - (absDelta - 0.85) / 0.25
-                      : 1;
-
-                    return (
-                      <article
-                        key={i}
-                        className="bento-card"
-                        style={{
-                          transform: `translate(-50%, calc(-50% + ${y}px))`,
-                          opacity,
-                        }}
-                      >
-                        <span className="bento-card-eyebrow">{card.eyebrow}</span>
-                        <h2 className="bento-card-heading">{card.heading}</h2>
-                        <p className="bento-card-body">{card.body}</p>
-                        <div className="bento-card-stat">
-                          <span className="bento-card-stat-val">{card.statVal}</span>
-                          <span className="bento-card-stat-label">{card.statLabel}</span>
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          );
-        })()}
+        {/* ── TOOTH JOURNEY (Section 2) ── */}
+        <ToothJourney />
 
         {/* ── ORYZO / TOOTH SECTION ── */}
         {(() => {
