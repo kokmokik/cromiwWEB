@@ -1,0 +1,426 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "nextjs_project_stack",
+        "label": "cromiwOS Frontend Next.js Stack",
+        "nodes": [
+          "readme_cromiw_frontend",
+          "readme_nextjs_framework",
+          "readme_vercel_platform",
+          "readme_geist_font",
+          "readme_next_font"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "README.md"
+      },
+      {
+        "id": "public_ui_icons",
+        "label": "Public SVG UI Assets",
+        "nodes": [
+          "svg_file_icon",
+          "svg_globe_icon",
+          "svg_next_logo",
+          "svg_vercel_logo",
+          "svg_window_icon"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "public/"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L1",
+      "id": "eslint_config_mjs",
+      "community": 4,
+      "norm_label": "eslint.config.mjs"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d_ts",
+      "community": 5,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "id": "next_config_ts",
+      "community": 6,
+      "norm_label": "next.config.ts"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "postcss_config_mjs",
+      "community": 7,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app\\layout.tsx",
+      "source_location": "L1",
+      "id": "app_layout_tsx",
+      "community": 2,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app\\layout.tsx",
+      "source_location": "L20",
+      "id": "layout_rootlayout",
+      "community": 2,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app\\page.tsx",
+      "source_location": "L1",
+      "id": "app_page_tsx",
+      "community": 8,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Next.js Agent Rules",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "1-5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_nextjs_agent_rules",
+      "community": 1,
+      "norm_label": "next.js agent rules"
+    },
+    {
+      "label": "Graphify Knowledge Graph Config",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "1-8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_graphify_config",
+      "community": 9,
+      "norm_label": "graphify knowledge graph config"
+    },
+    {
+      "label": "cromiwOS Frontend Project",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_cromiw_frontend",
+      "community": 0,
+      "norm_label": "cromiwos frontend project"
+    },
+    {
+      "label": "Next.js Framework",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "1",
+      "source_url": "https://nextjs.org",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_nextjs_framework",
+      "community": 1,
+      "norm_label": "next.js framework"
+    },
+    {
+      "label": "Vercel Deployment Platform",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "33",
+      "source_url": "https://vercel.com",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_vercel_platform",
+      "community": 3,
+      "norm_label": "vercel deployment platform"
+    },
+    {
+      "label": "Geist Font Family",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "21",
+      "source_url": "https://vercel.com/font",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_geist_font",
+      "community": 0,
+      "norm_label": "geist font family"
+    },
+    {
+      "label": "next/font Font Optimization",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "21",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_next_font",
+      "community": 0,
+      "norm_label": "next/font font optimization"
+    },
+    {
+      "label": "app/page.tsx Entry Point",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "19",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_app_page_tsx",
+      "community": 0,
+      "norm_label": "app/page.tsx entry point"
+    },
+    {
+      "label": "Next.js Wordmark Logo SVG",
+      "file_type": "image",
+      "source_file": "public/next.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "svg_next_logo",
+      "community": 1,
+      "norm_label": "next.js wordmark logo svg"
+    },
+    {
+      "label": "Vercel Triangle Logo SVG",
+      "file_type": "image",
+      "source_file": "public/vercel.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "svg_vercel_logo",
+      "community": 3,
+      "norm_label": "vercel triangle logo svg"
+    },
+    {
+      "label": "File/Document SVG Icon",
+      "file_type": "image",
+      "source_file": "public/file.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "svg_file_icon",
+      "community": 10,
+      "norm_label": "file/document svg icon"
+    },
+    {
+      "label": "Globe/World SVG Icon",
+      "file_type": "image",
+      "source_file": "public/globe.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "svg_globe_icon",
+      "community": 11,
+      "norm_label": "globe/world svg icon"
+    },
+    {
+      "label": "Browser Window SVG Icon",
+      "file_type": "image",
+      "source_file": "public/window.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "svg_window_icon",
+      "community": 12,
+      "norm_label": "browser window svg icon"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app\\layout.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "app_layout_tsx",
+      "_tgt": "layout_rootlayout",
+      "source": "app_layout_tsx",
+      "target": "layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "AGENTS.md",
+      "source_location": "2",
+      "weight": 0.9,
+      "_src": "agents_nextjs_agent_rules",
+      "_tgt": "readme_nextjs_framework",
+      "source": "agents_nextjs_agent_rules",
+      "target": "readme_nextjs_framework"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "1",
+      "weight": 1.0,
+      "_src": "readme_cromiw_frontend",
+      "_tgt": "readme_nextjs_framework",
+      "source": "readme_cromiw_frontend",
+      "target": "readme_nextjs_framework"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "33",
+      "weight": 1.0,
+      "_src": "readme_cromiw_frontend",
+      "_tgt": "readme_vercel_platform",
+      "source": "readme_cromiw_frontend",
+      "target": "readme_vercel_platform"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "21",
+      "weight": 1.0,
+      "_src": "readme_cromiw_frontend",
+      "_tgt": "readme_next_font",
+      "source": "readme_cromiw_frontend",
+      "target": "readme_next_font"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "21",
+      "weight": 1.0,
+      "_src": "readme_cromiw_frontend",
+      "_tgt": "readme_geist_font",
+      "source": "readme_cromiw_frontend",
+      "target": "readme_geist_font"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "19",
+      "weight": 1.0,
+      "_src": "readme_cromiw_frontend",
+      "_tgt": "readme_app_page_tsx",
+      "source": "readme_cromiw_frontend",
+      "target": "readme_app_page_tsx"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/next.svg",
+      "source_location": null,
+      "weight": 0.9,
+      "_src": "svg_next_logo",
+      "_tgt": "readme_nextjs_framework",
+      "source": "readme_nextjs_framework",
+      "target": "svg_next_logo"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/vercel.svg",
+      "source_location": null,
+      "weight": 0.9,
+      "_src": "svg_vercel_logo",
+      "_tgt": "readme_vercel_platform",
+      "source": "readme_vercel_platform",
+      "target": "svg_vercel_logo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "21",
+      "weight": 1.0,
+      "_src": "readme_next_font",
+      "_tgt": "readme_geist_font",
+      "source": "readme_geist_font",
+      "target": "readme_next_font"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "nextjs_project_stack",
+      "label": "cromiwOS Frontend Next.js Stack",
+      "nodes": [
+        "readme_cromiw_frontend",
+        "readme_nextjs_framework",
+        "readme_vercel_platform",
+        "readme_geist_font",
+        "readme_next_font"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "README.md"
+    },
+    {
+      "id": "public_ui_icons",
+      "label": "Public SVG UI Assets",
+      "nodes": [
+        "svg_file_icon",
+        "svg_globe_icon",
+        "svg_next_logo",
+        "svg_vercel_logo",
+        "svg_window_icon"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/"
+    }
+  ]
+}
