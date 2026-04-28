@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Cromiw — Dental Lab OS",
   description:
     "The automation platform built for dental labs. Every case, every workflow, every deadline — under control.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

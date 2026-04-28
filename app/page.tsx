@@ -169,13 +169,8 @@ export default function Home() {
         {/* ── NAV ── */}
         <header className="nav">
           <a href="/" className="nav-brand">Cromiw</a>
-          <nav className="nav-menu" aria-label="Main navigation">
-            <a href="#product">PRODUCT</a>
-            <a href="#how-it-works">HOW IT WORKS</a>
-            <a href="#team">TEAM</a>
-            <a href="#pricing">PRICING</a>
-          </nav>
-          <button className="nav-btn">REQUEST ACCESS</button>
+          <nav className="nav-menu" aria-label="Main navigation" />
+          <a href="#vertrieb" className="nav-btn">VERTRIEB KONTAKTIEREN</a>
         </header>
 
         {/* ── HERO + MONITOR (above the fold) ── */}
@@ -183,7 +178,7 @@ export default function Home() {
 
           {/* Hero text */}
           <section className="hero" id="hero">
-            <span className="hero-tag">— DENTAL LAB OS —</span>
+            <span className="hero-tag">— DENTAL LABOR OS —</span>
             <h1 className="hero-h1">
               <span className="h1-cro">cro</span><span className="h1-miw">miw</span>
             </h1>
@@ -198,31 +193,31 @@ export default function Home() {
                   <span className="dot" style={{ background: "#FF5F57" }} />
                   <span className="dot" style={{ background: "#FFBD2E" }} />
                   <span className="dot" style={{ background: "#28C840" }} />
-                  <span className="b-url">app.cromiw.com — Overview</span>
+                  <span className="b-url">app.cromiw.com — Übersicht</span>
                 </div>
                 <div className="app">
                   <aside className="a-sidebar">
                     <div className="a-logo">cromiw</div>
-                    <div className="a-group-label">WORKSPACE</div>
-                    <div className="a-item a-active"><span className="a-dot" />Overview</div>
-                    <div className="a-item">Cases</div>
+                    <div className="a-group-label">ARBEITSBEREICH</div>
+                    <div className="a-item a-active"><span className="a-dot" />Übersicht</div>
+                    <div className="a-item">Fälle</div>
                     <div className="a-item">Workflows</div>
-                    <div className="a-item">Calendar</div>
-                    <div className="a-group-label" style={{ marginTop: 10 }}>REPORTS</div>
-                    <div className="a-item">Analytics</div>
-                    <div className="a-item">Invoicing</div>
+                    <div className="a-item">Kalender</div>
+                    <div className="a-group-label" style={{ marginTop: 10 }}>BERICHTE</div>
+                    <div className="a-item">Analytik</div>
+                    <div className="a-item">Rechnungen</div>
                   </aside>
                   <main className="a-main">
                     <div className="a-topbar">
-                      <span className="a-page-title">Overview</span>
-                      <span className="a-new-case">+ NEW CASE</span>
+                      <span className="a-page-title">Übersicht</span>
+                      <span className="a-new-case">+ NEUER FALL</span>
                     </div>
                     <div className="a-stats">
                       {[
-                        ["142", "ACTIVE CASES",   "+ 12 today"],
-                        ["98%", "ON-TIME RATE",   "+ 3% this month"],
-                        ["4.2h","AVG TURNAROUND", "+ 0.8h saved"],
-                        ["31",  "DUE TODAY",      "8 need attention"],
+                        ["142", "AKTIVE FÄLLE",        "+ 12 heute"],
+                        ["98%", "PÜNKTLICHKEITSRATE", "+ 3% diesen Monat"],
+                        ["4.2h","DURCHSCHN. BEARB.",  "+ 0.8h gespart"],
+                        ["31",  "HEUTE FÄLLIG",       "8 brauchen Aufmerksamkeit"],
                       ].map(([v, l, s]) => (
                         <div className="a-stat" key={l}>
                           <b>{v}</b><span>{l}</span><small>{s}</small>
@@ -232,13 +227,13 @@ export default function Home() {
                     <div className="a-body">
                       <div className="a-table">
                         <div className="a-th">
-                          <span>CASE</span><span>DOCTOR</span><span>DUE</span><span>STATUS</span>
+                          <span>FALL</span><span>ARZT</span><span>FÄLLIG</span><span>STATUS</span>
                         </div>
                         {[
-                          ["Full arch crown",  "Dr. Martinez","Today",    "DONE",   "#4CAF50"],
-                          ["3-unit bridge",    "Dr. Kim",     "Tomorrow", "ACTIVE", "#E05C34"],
-                          ["Implant abutment", "Dr. Patel",   "In 3 days","QUEUE",  "#8A9BA0"],
-                          ["Night guard",      "Dr. Osei",    "In 4 days","QUEUE",  "#8A9BA0"],
+                          ["Vollbogen-Krone",   "Dr. Martinez","Heute",       "FERTIG",  "#4CAF50"],
+                          ["3-gliedrige Brücke","Dr. Kim",     "Morgen",      "AKTIV",   "#E05C34"],
+                          ["Implantat-Aufbau",  "Dr. Patel",   "In 3 Tagen",  "WARTEND", "#8A9BA0"],
+                          ["Aufbissschiene",    "Dr. Osei",    "In 4 Tagen",  "WARTEND", "#8A9BA0"],
                         ].map(([c, d, due, st, col]) => (
                           <div className="a-tr" key={c}>
                             <span>{c}</span><span>{d}</span><span>{due}</span>
@@ -247,13 +242,13 @@ export default function Home() {
                         ))}
                       </div>
                       <div className="a-eff">
-                        <div className="a-eff-title">LAB EFFICIENCY</div>
+                        <div className="a-eff-title">LABOR-EFFIZIENZ</div>
                         {[
-                          ["Milling dept.", "94%",  "#4CAF50"],
-                          ["Finishing",     "88%",  "#4CAF50"],
-                          ["QA Check",      "100%", "#4CAF50"],
-                          ["Dispatch",      "97%",  "#4CAF50"],
-                          ["Returns",       "12%",  "#E05C34"],
+                          ["Fräsabteilung", "94%",  "#4CAF50"],
+                          ["Ausarbeitung",  "88%",  "#4CAF50"],
+                          ["QA-Prüfung",    "100%", "#4CAF50"],
+                          ["Versand",       "97%",  "#4CAF50"],
+                          ["Retouren",      "12%",  "#E05C34"],
                         ].map(([l, v, c]) => (
                           <div className="a-eff-row" key={l}>
                             <span>{l}</span><span style={{ color: c }}>{v}</span>
@@ -277,24 +272,24 @@ export default function Home() {
         {(() => {
           const phases = [
             {
-              eyebrow: "MEET CROMIW",
-              heading: "One OS.\nFor every\nlab.",
-              sub: "Built for the way dental labs actually work — fast, precise, and always on deadline.",
+              eyebrow: "LERN CROMIW KENNEN",
+              heading: "Ein OS.\nFür jedes\nLabor.",
+              sub: "Entwickelt für die Art, wie Dentallabore wirklich arbeiten — schnell, präzise und immer pünktlich.",
             },
             {
-              eyebrow: "CASE TRACKING",
-              heading: "Every\ncase,\ntracked.",
-              sub: "Real-time status on every restoration. No calls, no guessing, no lost jobs.",
+              eyebrow: "FALLVERFOLGUNG",
+              heading: "Jeder\nFall,\nverfolgt.",
+              sub: "Echtzeit-Status für jede Restauration. Keine Anrufe, kein Raten, keine verlorenen Aufträge.",
             },
             {
-              eyebrow: "AUTOMATION",
-              heading: "Let\nworkflows\nrun.",
-              sub: "Define your process once. Cromiw handles assignments, reminders, and escalations automatically.",
+              eyebrow: "AUTOMATISIERUNG",
+              heading: "Workflows\neinfach\nlaufen lassen.",
+              sub: "Definieren Sie Ihren Prozess einmalig. Cromiw übernimmt Zuweisung, Erinnerungen und Eskalationen automatisch.",
             },
             {
-              eyebrow: "RESULTS",
-              heading: "Ship on\ntime.\nEvery time.",
-              sub: "Labs on Cromiw hit 98% on-time delivery in the first month.",
+              eyebrow: "ERGEBNISSE",
+              heading: "Pünktlich\nliefern.\nJedes Mal.",
+              sub: "Labore auf Cromiw erreichen im ersten Monat 98 % Pünktlichkeit.",
             },
           ];
           return (
@@ -328,7 +323,7 @@ export default function Home() {
                       style={{ width: `${oryzoProgress * 100}%` }}
                     />
                   </div>
-                  <span className="oryzo-scroll-hint">SCROLL TO EXPLORE</span>
+                  <span className="oryzo-scroll-hint">SCROLLEN ZUM ENTDECKEN</span>
                 </div>
 
                 {/* Right — Logo */}
@@ -337,203 +332,59 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Stats below sticky */}
-              <div className="oryzo-stats">
-                {[
-                  ["98%",  "On-time delivery rate"],
-                  ["4.2h", "Average time saved per case"],
-                  ["142+", "Cases managed per lab per month"],
-                  ["< 1d", "Time to onboard your team"],
-                ].map(([val, label]) => (
-                  <div className="oryzo-stat" key={label}>
-                    <span className="oryzo-stat-val">{val}</span>
-                    <span className="oryzo-stat-label">{label}</span>
-                  </div>
-                ))}
-              </div>
             </div>
           );
         })()}
 
-        {/* ── FEATURES ── */}
-        <section className="features" id="product">
-          <div className="section-inner">
-            <div className="section-header" data-reveal>
-              <span className="section-tag">PRODUCT</span>
-              <h2 className="section-h2">
-                Everything your lab<br />needs to perform.
-              </h2>
-            </div>
-            <div className="feat-grid">
-              {[
-                {
-                  n: "01",
-                  title: "Smart Case Tracking",
-                  copy: "Every case auto-assigned, deadline-aware, and status-synced across your entire team in real time.",
-                },
-                {
-                  n: "02",
-                  title: "Workflow Automation",
-                  copy: "Build custom workflows that run without manual intervention — from intake to final dispatch.",
-                },
-                {
-                  n: "03",
-                  title: "Lab Analytics",
-                  copy: "Know your throughput, efficiency, and bottlenecks at a glance. Data that actually drives decisions.",
-                },
-              ].map((f, i) => (
-                <div
-                  key={f.n}
-                  className="feat-card"
-                  data-reveal
-                  style={{ transitionDelay: `${i * 0.12}s` }}
-                >
-                  <span className="feat-num">{f.n}</span>
-                  <h3 className="feat-title">{f.title}</h3>
-                  <p className="feat-copy">{f.copy}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── HOW IT WORKS ── */}
-        <section className="how" id="how-it-works">
-          <div className="section-inner">
-            <div className="section-header" data-reveal>
-              <span className="section-tag">HOW IT WORKS</span>
-              <h2 className="section-h2">
-                Up and running<br />in one afternoon.
-              </h2>
-            </div>
-            <div className="how-steps">
-              {[
-                {
-                  n: "01",
-                  title: "Connect your lab",
-                  copy: "Import existing cases from your current system. No complex setup, no lost data, no disruption to your team.",
-                },
-                {
-                  n: "02",
-                  title: "Set your workflows",
-                  copy: "Define stages, assign teams, and configure deadline rules that match your exact process — down to the last step.",
-                },
-                {
-                  n: "03",
-                  title: "Ship on time",
-                  copy: "Cromiw handles reminders, escalations, and reporting automatically so you can stay focused on the work that matters.",
-                },
-              ].map((s, i) => (
-                <div
-                  key={s.n}
-                  className="how-step"
-                  data-reveal
-                  style={{ transitionDelay: `${i * 0.14}s` }}
-                >
-                  <span className="step-num">{s.n}</span>
-                  <div className="step-content">
-                    <h3>{s.title}</h3>
-                    <p>{s.copy}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── TEAM ── */}
-        <section className="team" id="team">
+        <section className="team-section">
           <div className="section-inner">
-            <div className="section-header" data-reveal>
-              <span className="section-tag">TEAM</span>
-              <h2 className="section-h2">Built by people who<br />know dental labs.</h2>
+            <div className="team-section-header">
+              <span className="team-section-tag">TEAM</span>
+              <h2 className="team-section-h2">Unser Team</h2>
             </div>
-            <div className="team-grid">
+            <div className="team-members">
               {[
-                { initials: "AK", name: "Aliya Kenzhe",  role: "CO-FOUNDER & CEO" },
-                { initials: "MR", name: "Marcos Rueda",  role: "CO-FOUNDER & CTO" },
-                { initials: "SL", name: "Sona Levin",    role: "HEAD OF PRODUCT"  },
-              ].map((m, i) => (
-                <div
-                  key={m.name}
-                  className="team-card"
-                  data-reveal
-                  style={{ transitionDelay: `${i * 0.12}s` }}
-                >
-                  <div className="team-avatar">{m.initials}</div>
-                  <div className="team-name">{m.name}</div>
-                  <div className="team-role">{m.role}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── PRICING ── */}
-        <section className="pricing" id="pricing">
-          <div className="section-inner">
-            <div className="section-header" data-reveal>
-              <span className="section-tag">PRICING</span>
-              <h2 className="section-h2">Simple, honest pricing.</h2>
-            </div>
-            <div className="price-grid">
-              {[
-                {
-                  name: "STARTER",
-                  price: "$99",
-                  period: "/ month",
-                  features: [
-                    "Up to 3 technicians",
-                    "100 cases / month",
-                    "Core workflows",
-                    "Email support",
-                  ],
-                  cta: "Start Free Trial",
-                  featured: false,
-                },
-                {
-                  name: "PRO",
-                  price: "$249",
-                  period: "/ month",
-                  features: [
-                    "Unlimited technicians",
-                    "Unlimited cases",
-                    "Custom workflows",
-                    "Priority support",
-                    "Advanced analytics",
-                  ],
-                  cta: "Request Access",
-                  featured: true,
-                },
-              ].map((p, i) => (
-                <div
-                  key={p.name}
-                  className={`price-card${p.featured ? " price-card-featured" : ""}`}
-                  data-reveal
-                  style={{ transitionDelay: `${i * 0.14}s` }}
-                >
-                  <div className="price-name">{p.name}</div>
-                  <div className="price-amount">
-                    {p.price}<span>{p.period}</span>
+                { name: "Sanzhar", role: "Founder & CEO" },
+                { name: "Kaito",   role: "Co-Founder & CTO" },
+                { name: "Paul",    role: "Co-Founder & CRO" },
+              ].map((m) => (
+                <div className="team-member" key={m.name}>
+                  <div className="team-photo-box" />
+                  <div>
+                    <div className="team-member-name">{m.name}</div>
+                    <div className="team-member-role">{m.role}</div>
                   </div>
-                  <ul className="price-features">
-                    {p.features.map((f) => <li key={f}>{f}</li>)}
-                  </ul>
-                  <button className={p.featured ? "btn-solid-light" : "btn-ghost"}>
-                    {p.cta}
-                  </button>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── CTA BAND ── */}
-        <section className="cta-band" data-reveal>
-          <h2 className="cta-text">
-            Ready to <span>make</span><br />it work?
-          </h2>
-          <button className="btn-solid-light">START FREE TRIAL</button>
+        {/* ── VERTRIEB KONTAKTIEREN ── */}
+        <section className="contact-section" id="vertrieb">
+          <div className="contact-inner">
+            <div className="contact-header">
+              <span className="contact-tag">VERTRIEB</span>
+              <h2 className="contact-h2">Vertrieb Kontaktieren</h2>
+              <p className="contact-sub">Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.</p>
+            </div>
+            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="contact-field">
+                <label className="contact-label" htmlFor="company">Unternehmensname</label>
+                <input className="contact-input" id="company" type="text" placeholder="Ihr Unternehmen" required />
+              </div>
+              <div className="contact-field">
+                <label className="contact-label" htmlFor="fullname">Vollständiger Name</label>
+                <input className="contact-input" id="fullname" type="text" placeholder="Vor- und Nachname" required />
+              </div>
+              <div className="contact-field">
+                <label className="contact-label" htmlFor="email">E-Mail-Adresse</label>
+                <input className="contact-input" id="email" type="email" placeholder="ihre@email.com" required />
+              </div>
+              <button type="submit" className="contact-btn">Anfrage senden</button>
+            </form>
+          </div>
         </section>
 
         {/* ── FOOTER ── */}
@@ -541,36 +392,33 @@ export default function Home() {
           <div className="footer-cols">
             <div className="footer-col footer-col--brand">
               <span className="footer-brand">Cromiw</span>
-              <p className="footer-tagline">Dental Lab OS.<br />Every case under control.</p>
+              <p className="footer-tagline">Dental Labor OS.<br />Jeder Fall unter Kontrolle.</p>
             </div>
             <div className="footer-col">
-              <span className="footer-col-title">Product</span>
-              <a href="#product">Overview</a>
-              <a href="#how-it-works">How It Works</a>
-              <a href="#pricing">Pricing</a>
-              <a href="#">Changelog</a>
+              <span className="footer-col-title">Produkt</span>
+              <a href="#">Übersicht</a>
+              <a href="#">Änderungsprotokoll</a>
             </div>
             <div className="footer-col">
-              <span className="footer-col-title">Company</span>
-              <a href="#team">Team</a>
-              <a href="#">About</a>
+              <span className="footer-col-title">Unternehmen</span>
+              <a href="#">Über uns</a>
               <a href="#">Blog</a>
-              <a href="#">Careers</a>
+              <a href="#">Karriere</a>
             </div>
             <div className="footer-col">
-              <span className="footer-col-title">Connect</span>
+              <span className="footer-col-title">Kontakt</span>
               <a href="mailto:hello@cromiw.com">hello@cromiw.com</a>
               <a href="#">Instagram</a>
               <a href="#">LinkedIn</a>
-              <a href="#" className="footer-cta-link">Request Access →</a>
+              <a href="#" className="footer-cta-link">Zugang anfordern →</a>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2026 Cromiw. All rights reserved.</span>
+            <span>© 2026 Cromiw. Alle Rechte vorbehalten.</span>
             <div className="footer-legal">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookie Settings</a>
+              <a href="#">Datenschutzrichtlinie</a>
+              <a href="#">Nutzungsbedingungen</a>
+              <a href="#">Cookie-Einstellungen</a>
             </div>
           </div>
         </footer>

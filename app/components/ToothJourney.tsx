@@ -3,8 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-/* ── Waypoints: px/py = 3D position, rotX/Y = rotation, bgR/G/B = scene background
-   Background morphs from brand navy (#1A1F36) → dark forest green (#0A1E12)      */
+/* Waypoints — navy (#1A1F36) → dark forest green (#0A1E12) */
 const WP = [
   { p: 0.00, px:  0.2, py:  1.6, rotX: -0.12, rotY: 0.20, bgR: 26, bgG: 31, bgB: 54, kR: 1.00, kG: 0.97, kB: 0.94 },
   { p: 0.17, px: -0.1, py:  0.9, rotX:  0.15, rotY: 0.90, bgR: 22, bgG: 31, bgB: 51, kR: 1.00, kG: 0.97, kB: 0.94 },
@@ -75,9 +74,8 @@ export default function ToothJourney() {
   const stickyRef  = useRef<HTMLDivElement>(null);
   const canvasRef  = useRef<HTMLCanvasElement>(null);
 
-  /* Refs to DOM panel + nav elements (mutated in rAF, bypasses React re-renders) */
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const jnsRefs   = useRef<(HTMLDivElement | null)[]>([]);
+  const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const hintRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,14 +92,14 @@ export default function ToothJourney() {
     renderer.toneMappingExposure = 1.2;
     renderer.setClearColor(0x1a1f36, 1);
 
-    const scene  = new THREE.Scene();
+    const scene   = new THREE.Scene();
     const bgColor = new THREE.Color(0x1a1f36);
     scene.background = bgColor;
 
     const camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 200);
     camera.position.set(0, 0, 7);
 
-    /* ── Lights — warm, no red ────────────────────────── */
+    /* ── Lights ────────────────────────────────────────── */
     scene.add(new THREE.AmbientLight(0xfff5e8, 0.5));
 
     const key = new THREE.DirectionalLight(0xfffaf0, 4.0);
@@ -123,7 +121,7 @@ export default function ToothJourney() {
     const glow = new THREE.PointLight(0xffe0b0, 1.1, 9);
     scene.add(glow);
 
-    /* ── Material — ceramic white ─────────────────────── */
+    /* ── Material ─────────────────────────────────────── */
     const mat = new THREE.MeshPhysicalMaterial({
       color: 0xf5f1eb,
       roughness: 0.13,
@@ -133,14 +131,14 @@ export default function ToothJourney() {
       ior: 1.5,
     });
 
-    /* ── Placeholder sphere (visible while STL loads) ─── */
+    /* ── Placeholder sphere ────────────────────────────── */
     const ph = new THREE.Mesh(new THREE.SphereGeometry(0.85, 48, 48), mat);
     ph.position.set(0.2, 1.6, 0);
     scene.add(ph);
     let toothMesh: THREE.Object3D = ph;
     let baseScale = 1;
 
-    /* ── Load real STL ────────────────────────────────── */
+    /* ── Load STL ─────────────────────────────────────── */
     fetch("/tooth.stl")
       .then((r) => r.arrayBuffer())
       .then((buf) => {
@@ -171,9 +169,9 @@ export default function ToothJourney() {
     let prog = 0;
 
     const onScroll = () => {
-      const rect      = section.getBoundingClientRect();
-      const scrolled  = -rect.top;
-      const total     = rect.height - window.innerHeight;
+      const rect     = section.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const total    = rect.height - window.innerHeight;
       prog = clamp(scrolled / total, 0, 1);
 
       if (prog > 0.04) hintRef.current?.classList.add("jy-hint-off");
@@ -185,27 +183,22 @@ export default function ToothJourney() {
       target.rotX = s.rotX;
       target.rotY = s.rotY;
 
-      /* Background */
-      bgColor.setRGB(s.bgR / 255, s.bgG / 255, s.bgB / 255);
-      scene.background = bgColor;
-
-      /* Warm key light stays constant; could tint slightly if desired */
       key.color.setRGB(s.kR, s.kG, s.kB);
 
-      /* Stage */
+      /* Big stage labels */
       const stage = prog < 0.32 ? 0 : prog < 0.65 ? 1 : 2;
-      jnsRefs.current.forEach((el, i) => {
+      stageRefs.current.forEach((el, i) => {
         if (!el) return;
-        el.classList.toggle("jn-on",   i === stage);
-        el.classList.toggle("jn-done", i < stage);
+        el.classList.toggle("jy-stage-on", i === stage);
       });
 
-      /* Panels */
+      /* Right panels */
       panelRefs.current.forEach((el, i) => {
         if (!el) return;
         const [lo, hi] = WINS[i];
         el.classList.toggle("fp-on", prog >= lo && prog < hi);
       });
+
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -227,15 +220,17 @@ export default function ToothJourney() {
       raf = requestAnimationFrame(animate);
       tick += 0.007;
 
-      cur.px   += (target.px   - cur.px)   * 0.1;
-      cur.py   += (target.py   - cur.py)   * 0.1;
-      cur.rotX += (target.rotX - cur.rotX) * 0.08;
-      cur.rotY += (target.rotY - cur.rotY) * 0.08;
+      /* Faster lerp — snappier, less watery feel */
+      cur.px   += (target.px   - cur.px)   * 0.13;
+      cur.py   += (target.py   - cur.py)   * 0.13;
+      cur.rotX += (target.rotX - cur.rotX) * 0.13;
+      cur.rotY += (target.rotY - cur.rotY) * 0.13;
 
       toothMesh.position.x = cur.px;
       toothMesh.position.y = cur.py;
-      toothMesh.rotation.x = cur.rotX + Math.sin(tick * 0.6) * 0.013;
-      toothMesh.rotation.y = cur.rotY + Math.sin(tick * 0.4) * 0.010;
+      /* Minimal idle micro-oscillation — just enough to feel alive */
+      toothMesh.rotation.x = cur.rotX + Math.sin(tick * 0.6) * 0.004;
+      toothMesh.rotation.y = cur.rotY + Math.sin(tick * 0.4) * 0.003;
       if (baseScale) toothMesh.scale.setScalar(baseScale);
       glow.position.set(cur.px + 0.4, cur.py + 0.5, 2);
 
@@ -252,18 +247,18 @@ export default function ToothJourney() {
   }, []);
 
   const panels = [
-    { stage: "Dentist", n: "01", side: "r", title: "Prescription\nreceived.", body: "The moment a doctor submits a case, Cromiw captures it — materials, specs, deadline — and routes it instantly to the lab." },
-    { stage: "Dentist", n: "02", side: "r", title: "Doctor\nPortal.",       body: "Referring doctors get a live view of every case. Status updates in real time. No calls, no guesswork." },
-    { stage: "Lab",     n: "03", side: "r", title: "Smart\nDeadlines.",     body: "Cromiw calculates realistic due dates from lab capacity, complexity, and technician load — alerting you before anything slips." },
-    { stage: "Lab",     n: "04", side: "r", title: "Case\nTracking.",       body: "Every handoff recorded. Every touchpoint logged. A complete audit trail from intake to dispatch, automatically." },
-    { stage: "Client",  n: "05", side: "r", title: "Quality\nControl.",     body: "Configurable QA checkpoints before any case ships. Catch issues early, document findings, improve over time." },
-    { stage: "Client",  n: "06", side: "r", title: "Dispatch\n& Invoice.",  body: "Case approved — invoice sent automatically. Right line items, right doctor, right pricing. Zero manual steps." },
+    { stage: "Zahnarzt",    n: "01", title: "Auftrag\neingegangen.",     body: "Sobald ein Arzt einen Fall einreicht, erfasst Cromiw ihn — Materialien, Spezifikationen, Frist — und leitet ihn sofort ans Labor weiter." },
+    { stage: "Zahnarzt",    n: "02", title: "Arzt-\nPortal.",            body: "Überweisende Ärzte haben jederzeit Einblick in jeden Fall. Echtzeit-Updates. Keine Anrufe, kein Raten." },
+    { stage: "Dentallabor", n: "03", title: "Intelligente\nFristen.",    body: "Cromiw berechnet realistische Fristen aus Laborkapazität, Komplexität und Technikerlast — und warnt Sie, bevor etwas schiefgeht." },
+    { stage: "Dentallabor", n: "04", title: "Fall-\nverfolgung.",        body: "Jede Übergabe dokumentiert. Jeder Schritt protokolliert. Ein vollständiger Prüfpfad vom Eingang bis zum Versand — automatisch." },
+    { stage: "Kunde",n: "05", title: "Qualitäts-\nkontrolle.",    body: "Konfigurierbare QA-Prüfpunkte vor dem Versand jedes Falls. Fehler früh erkennen, Befunde dokumentieren, kontinuierlich verbessern." },
+    { stage: "Kunde",n: "06", title: "Versand &\nRechnung.",      body: "Fall freigegeben — Rechnung automatisch versendet. Richtige Positionen, richtiger Arzt, richtiger Preis. Null manuelle Schritte." },
   ];
 
   const stages = [
-    { label: "Dentist", sub: "Case intake & portal" },
-    { label: "Lab",     sub: "Fabrication & QA"     },
-    { label: "Client",  sub: "Dispatch & delivery"  },
+    { label: "Zahnarzt"     },
+    { label: "Dentallabor"  },
+    { label: "Kunde" },
   ];
 
   return (
@@ -273,14 +268,24 @@ export default function ToothJourney() {
         {/* Three.js canvas */}
         <canvas ref={canvasRef} className="jy-canvas" />
 
-        {/* Feature panels */}
+        {/* Big stage labels */}
+        {stages.map((s, i) => (
+          <div
+            key={i}
+            ref={(el) => { stageRefs.current[i] = el; }}
+            className={`jy-stage${i === 0 ? " jy-stage-on" : ""}`}
+          >
+            {s.label}
+          </div>
+        ))}
+
+        {/* Feature panels — title only, no description */}
         {panels.map((p, i) => (
           <div
             key={i}
             ref={(el) => { panelRefs.current[i] = el; }}
             className="jy-fp jy-fp-r"
           >
-            <span className="jy-fp-stage">{p.stage}</span>
             <span className="jy-fp-n">{p.n}</span>
             <div className="jy-fp-rule" />
             <div className="jy-fp-title">
@@ -288,30 +293,13 @@ export default function ToothJourney() {
                 <span key={j}>{line}{j < p.title.split("\n").length - 1 && <br />}</span>
               ))}
             </div>
-            <div className="jy-fp-body">{p.body}</div>
           </div>
         ))}
-
-        {/* Vertical pill nav */}
-        <div className="jy-nav">
-          {stages.map((s, i) => (
-            <div
-              key={i}
-              ref={(el) => { jnsRefs.current[i] = el; }}
-              className={`jy-nav-stage${i === 0 ? " jn-on" : ""}`}
-            >
-              <div className="jy-nav-text">
-                <div className="jy-nav-label">{s.label}</div>
-                <div className="jy-nav-sub">{s.sub}</div>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Scroll hint */}
         <div ref={hintRef} className="jy-hint">
           <div className="jy-hint-line" />
-          <div className="jy-hint-txt">Scroll</div>
+          <div className="jy-hint-txt">Scrollen</div>
         </div>
 
       </div>
