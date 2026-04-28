@@ -1458,17 +1458,105 @@ body {
   .footer-legal { flex-wrap: wrap; gap: 1rem; }
 }
 
-/* ─── RESPONSIVE ────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Tablet / large phone (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
-  .nav { padding: 0 1.5rem; }
+
+  /* Nav */
+  .nav { padding: 0 1.2rem; }
   .nav-menu { display: none; }
-  .section-inner { padding: 0 1.5rem; }
-  .feat-grid { grid-template-columns: 1fr; }
-  .feat-card { border-right: none; border-bottom: 1px solid var(--border); }
-  .team-grid { grid-template-columns: 1fr; }
-  .team-card { border-right: none; border-bottom: 1px solid var(--border); }
-  .price-grid { grid-template-columns: 1fr; }
-  .footer-top { flex-direction: column; gap: 2rem; align-items: flex-start; }
-  .footer-nav { flex-wrap: wrap; gap: 1.2rem; }
-  .footer-bottom { flex-direction: column; gap: 0.5rem; }
+  .nav-btn {
+    font-size: 0.58rem;
+    padding: 0.6rem 0.9rem;
+    letter-spacing: 0.07em;
+  }
+
+  /* Hero */
+  .hero { padding: 2rem 1.2rem 0; }
+  .hero-tag { font-size: 0.62rem; }
+
+  /* Monitor — hide sidebar + efficiency, simplify */
+  .monitor-flat-scene { padding: 48px 1.2rem 48px; }
+  .monitor-flat-unit { width: min(820px, 93vw); }
+  .a-sidebar { display: none; }
+  .a-eff { display: none; }
+  .a-stats { grid-template-columns: 1fr 1fr; }
+  .a-stat b { font-size: 11px; }
+  .a-stat span { font-size: 4px; letter-spacing: 0.08em; }
+  .a-stat small { font-size: 5px; }
+  .a-th { grid-template-columns: 2fr 1fr 1fr; }
+  .a-tr { grid-template-columns: 2fr 1fr 1fr; }
+  /* hide Doctor column — too cramped */
+  .a-th span:nth-child(2),
+  .a-tr span:nth-child(2) { display: none; }
+
+  /* Tooth Journey — stage labels: centre them */
+  .jy-stage {
+    left: 50%;
+    top: 38%;
+    font-size: clamp(2.8rem, 12vw, 5rem);
+    transform: translateX(-50%) translateY(calc(-50% + 24px));
+    white-space: nowrap;
+    text-align: center;
+  }
+  .jy-stage.jy-stage-on {
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  /* Tooth Journey — feature panels: tighter */
+  .jy-fp { max-width: 44vw; }
+  .jy-fp-r { right: 10px; }
+  .jy-fp-title { font-size: clamp(15px, 4.2vw, 22px); }
+  .jy-fp-n { font-size: 8px; margin-bottom: 6px; }
+  .jy-fp-rule { margin-bottom: 10px; }
+
+  /* Oryzo — full-width card, hide 3D logo */
+  .oryzo-sticky {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+  }
+  .oryzo-logo { display: none; }
+  .oryzo-left { padding: 2rem 1.5rem 4rem; }
+  .oryzo-card { margin: 0.8rem; padding: 2rem 1.5rem 4rem; border-radius: 18px; }
+  .oryzo-h { font-size: clamp(2.4rem, 10vw, 4rem); }
+  .oryzo-p { font-size: 0.85rem; }
+  .oryzo-bar-wrap { left: 1.5rem; right: 1.5rem; }
+  .oryzo-scroll-hint { left: 1.5rem; }
+
+  /* Team */
+  .team-section { padding: 5rem 0; }
+  .team-section .section-inner { padding: 0 1.2rem; }
+  .team-members { grid-template-columns: 1fr; gap: 2rem; }
+  .team-section-header { margin-bottom: 3rem; }
+
+  /* Contact */
+  .contact-section { padding: 5rem 0; }
+  .contact-inner { padding: 0 1.2rem; }
+  .contact-header { margin-bottom: 2.5rem; }
+  .contact-btn { align-self: stretch; text-align: center; }
+
+  /* Footer */
+  .footer { padding: 3rem 1.2rem 2rem; }
+  .footer-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-col--brand { grid-column: auto; }
+  .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
+  .footer-legal { flex-wrap: wrap; gap: 1rem; }
+}
+
+/* ── Small phone (≤ 390px) ────────────────────────────────────── */
+@media (max-width: 390px) {
+  .nav-btn {
+    font-size: 0.5rem;
+    padding: 0.55rem 0.65rem;
+    letter-spacing: 0.05em;
+  }
+  .h1-cro, .h1-miw { font-size: clamp(3rem, 20vw, 6rem); }
+  .jy-stage { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+  .jy-fp { max-width: 48vw; }
+  .jy-fp-title { font-size: clamp(13px, 3.8vw, 18px); }
+  .oryzo-card { margin: 0.5rem; padding: 1.5rem 1.2rem 3.5rem; }
+  .oryzo-h { font-size: clamp(2rem, 10vw, 3rem); }
 }
