@@ -1484,6 +1484,12 @@ body {
    RESPONSIVE
    ════════════════════════════════════════════════════════════════ */
 
+/* ── Touch / mobile — hide custom cursor ──────────────────────── */
+@media (hover: none), (max-width: 768px) {
+  .cursor { display: none; }
+  body { cursor: auto; }
+}
+
 /* ── Tablet / large phone (≤ 768px) ───────────────────────────── */
 @media (max-width: 768px) {
 

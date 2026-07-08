@@ -32,6 +32,7 @@ export default function DemoPage() {
 
       <div style={{
         minHeight: "100vh",
+        width: "100%",
         background: "var(--navy)",
         display: "flex",
         flexDirection: "column",
@@ -40,6 +41,7 @@ export default function DemoPage() {
         gap: "2.5rem",
         padding: "2rem",
         fontFamily: "var(--sans)",
+        boxSizing: "border-box",
       }}>
         <p style={{
           fontSize: "0.72rem",
