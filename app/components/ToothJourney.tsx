@@ -243,7 +243,7 @@ export default function ToothJourney() {
     { stage: "Zahnarzt",    n: "02", title: "Labor\nPortal.",            body: "Überweisende Ärzte haben jederzeit Einblick in jeden Fall. Echtzeit-Updates. Keine Anrufe, kein Raten." },
     { stage: "Dentallabor", n: "03", title: "Verfolgung\nvon jedem Fall.",    body: "Cromiw berechnet realistische Fristen aus Laborkapazität, Komplexität und Technikerlast — und warnt Sie, bevor etwas schiefgeht." },
     { stage: "Dentallabor", n: "04", title: "Alles\nim Blick.",        body: "Jede Übergabe dokumentiert. Jeder Schritt protokolliert. Ein vollständiger Prüfpfad vom Eingang bis zum Versand — automatisch." },
-    { stage: "Kunde",n: "05", title: "Püktlich\nLiefern.",    body: "Konfigurierbare QA-Prüfpunkte vor dem Versand jedes Falls. Fehler früh erkennen, Befunde dokumentieren, kontinuierlich verbessern." },
+    { stage: "Kunde",n: "05", title: "Pünktlich\nLiefern.",    body: "Konfigurierbare QA-Prüfpunkte vor dem Versand jedes Falls. Fehler früh erkennen, Befunde dokumentieren, kontinuierlich verbessern." },
     { stage: "Kunde",n: "06", title: "das ist\nCROMIW",      body: "Fall freigegeben — Rechnung automatisch versendet. Richtige Positionen, richtiger Arzt, richtiger Preis. Null manuelle Schritte." },
   ];
 
