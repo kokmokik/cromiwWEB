@@ -1,7 +1,7 @@
 # Graph Report - C:\Users\Sauzhur\Documents\CROMIW PROJECT\cromiwOS frontend  (2026-07-14)
 
 ## Corpus Check
-- 10 files · ~174,610 words
+- 10 files · ~234,450 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

@@ -354,6 +354,8 @@ export default function Home() {
                 { name: "Sanzhar", role: "Founder & CEO", photo: "/team/sanzhar.jpg" },
                 { name: "Kaito",   role: "Co-Founder & CTO", photo: "/team/kaito.jpg" },
                 { name: "Paul",    role: "Co-Founder & CRO", photo: "/team/paul.jpg" },
+                { name: "Vjay",    role: "Indian Worker", photo: "/team/vjay.jpg" },
+                { name: "Albi",    role: "SMM", photo: "/team/albi.jpg" },
               ].map((m) => (
                 <div className="team-member" key={m.name}>
                   <div className="team-photo-box">
@@ -361,7 +363,7 @@ export default function Home() {
                       src={m.photo}
                       alt={m.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 20vw"
                       style={{ objectFit: "cover" }}
                     />
                   </div>
